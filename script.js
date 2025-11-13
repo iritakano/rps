@@ -1,5 +1,11 @@
 function getComputerChoice() {
     let choices = ["rock", "paper", "scissors"];
     let choicesIndex = Math.floor(Math.random() * choices.length);
-    return choices[choicesIndex];
+    let computerChoice = choices[choicesIndex];
+    return computerChoice;
 }
+
+function getHumanChoice() {
+    let humanChoice = prompt("Choose rock, paper, or scissors: ");
+}
+
