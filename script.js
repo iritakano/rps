@@ -4,10 +4,6 @@ function getComputerChoice() {
     return choices[choicesIndex];
 }
 
-function getHumanChoice() {
-    return prompt("Choose rock, paper, or scissors: ");
-}
-
 let humanScore = 0;
 let computerScore = 0;
 
@@ -36,7 +32,7 @@ function playRound(humanChoice, computerChoice){
     }
 }
 
-const buttons = querySelectorAll("button");
+const buttons = document.querySelectorAll("button");
 
 buttons.forEach(button => {
     button.addEventListener("click", () => {
