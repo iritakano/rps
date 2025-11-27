@@ -36,27 +36,12 @@ function playRound(humanChoice, computerChoice){
     }
 }
 
-function playGame() {
-    let round = 1;
+const buttons = querySelectorAll("button");
 
-    for(round = 1; round <= 5; round++){
-        console.log(`Round ${round}`);
-        const humanSelection = getHumanChoice();
+buttons.forEach(button => {
+    button.addEventListener("click", () => {
+        const playerSelection = button.value;
         const computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
-    }
-
-    if (humanScore > computerScore){
-        console.log("You win the game!")
-    }
-
-    else if (humanScore == computerScore){
-        console.log("You tied this game.")
-    }
-
-    else {
-        console.log("You lose the game :(")
-    }
-}
-
-playGame();
+        playRound(playerSelection, computerSelection);
+    } );
+})
