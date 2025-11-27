@@ -8,28 +8,43 @@ let humanScore = 0;
 let computerScore = 0;
 
 function playRound(humanChoice, computerChoice){
-    humanChoice = humanChoice.toLowerCase();
+    const result = document.querySelector("results");
+    result.innerHTML = "";
+    const roundResult = document.createElement("p");
+    const playerScore = document.createElement("p");
+    const compScore = document.createElement("p");
+
     if (humanChoice == computerChoice){
-        console.log(`You chose ${humanChoice}. Computer chose ${computerChoice}. It's a tie this round.`);
-        console.log(`Your score: ${humanScore}`);
-        console.log(`Computer score: ${computerScore}`);
+        roundResult.textContent = `You chose ${humanChoice}. Computer chose ${computerChoice}. It's a tie this round.`;
+
+        playerScore.textContent = `Your score: ${humanScore}`;
+
+        compScore.textContent = `Computer score: ${computerScore}`;
     }
 
     else if((humanChoice == "rock" && computerChoice == "paper") ||
     (humanChoice == "paper" && computerChoice == "scissors") ||
     (humanChoice == "scissors" && computerChoice == "rock")){
-        console.log(`You chose ${humanChoice}. Computer chose ${computerChoice}. You lose the round.`);
+        roundResult.textContent = `You chose ${humanChoice}. Computer chose ${computerChoice}. You lose the round.`;
+
         computerScore += 1;
-        console.log(`Your score: ${humanScore}`);
-        console.log(`Computer score: ${computerScore}`);
+
+        playerScore.textContent = `Your score: ${humanScore}`;
+        compScore.textContent = `Computer score: ${computerScore}`
     }
 
     else{
-        console.log(`You chose ${humanChoice}. Computer chose ${computerChoice}. You win the round!`);
+        roundResult.textContent = `You chose ${humanChoice}. Computer chose ${computerChoice}. You win the round!`
+    
         humanScore += 1;
-        console.log(`Your score: ${humanScore}`);
-        console.log(`Computer score: ${computerScore}`);
+
+        playerScore.textContent = `Your score: ${humanScore}`;
+        compScore.textContent = `Computer score: ${computerScore}`;
     }
+
+    result.appendChild(roundResult);
+    result.appendChild(playerScore);
+    result.appendChild(compScore);
 }
 
 const buttons = document.querySelectorAll("button");
