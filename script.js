@@ -4,11 +4,18 @@ function getComputerChoice() {
     return choices[choicesIndex];
 }
 
+function disableButtons(){
+    buttons.forEach(button => {
+        button.disabled = true;
+    })
+}
+
 let humanScore = 0;
 let computerScore = 0;
+const result = document.querySelector("results");
+const gameResult = document.createElement("p");
 
 function playRound(humanChoice, computerChoice){
-    const result = document.querySelector("results");
     result.innerHTML = "";
     const roundResult = document.createElement("p");
     const playerScore = document.createElement("p");
@@ -45,6 +52,18 @@ function playRound(humanChoice, computerChoice){
     result.appendChild(roundResult);
     result.appendChild(playerScore);
     result.appendChild(compScore);
+
+    if (computerScore == 5){
+            gameResult.textContent = "You lose the game :("
+            result.appendChild(gameResult);
+            disableButtons();
+    }
+
+    if(humanScore == 5){
+            gameResult.textContent = "You win the game!";
+            result.appendChild(gameResult);
+            disableButtons();
+    }
 }
 
 const buttons = document.querySelectorAll("button");
@@ -53,6 +72,7 @@ buttons.forEach(button => {
     button.addEventListener("click", () => {
         const playerSelection = button.value;
         const computerSelection = getComputerChoice();
+
         playRound(playerSelection, computerSelection);
     } );
 })
